@@ -10,9 +10,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Security {
-	private Staff staff;
-	private Shift shift;
-	
+public class Building {
+	private Long id;
+	private String name;
 
 }
