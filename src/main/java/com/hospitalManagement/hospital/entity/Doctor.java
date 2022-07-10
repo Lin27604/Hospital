@@ -1,4 +1,4 @@
-package main.java.com.hospitalManagement.hospital.entity;
+package com.hospitalManagement.hospital.entity;
 
 import java.util.Date;
 

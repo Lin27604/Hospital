@@ -10,14 +10,16 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "building")
+@Table(name = "buildings")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Building {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long buildingId;
-	private String buildingName;
+	private Integer buildingId;
+
+	private String name;
 
 //	@OneToMany(cascade = CascadeType.ALL)
 //	@JoinColumn(
