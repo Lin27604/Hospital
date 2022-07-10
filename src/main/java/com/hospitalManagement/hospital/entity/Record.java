@@ -6,29 +6,29 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Data
-@Table(name = "appointments")
-@NoArgsConstructor
+@Table(name = "records")
 @AllArgsConstructor
+@NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
-public class Appointment {
+public class Record {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long appointmentId;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long recordId;
+
+    private Long doctorId;
 
     private Long patientId;
 
-    private Long staffId;
+    private String description;
 
-    private Long departmentId;
+    private String medAdvice;
 
-    private String reason;
+    private String type;
 
     private Date date;
-
 }

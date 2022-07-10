@@ -9,6 +9,8 @@
 -- Server version: 5.7.34
 -- PHP Version: 7.4.21
 
+
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -28,6 +30,29 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `ambulance`
 --
+
+DROP TABLE IF EXISTS hospital.ambulance;
+DROP TABLE IF EXISTS hospital.ambulanceOrder;
+DROP TABLE IF EXISTS hospital.appointments;
+DROP TABLE IF EXISTS hospital.bills;
+DROP TABLE IF EXISTS hospital.buildings;
+DROP TABLE IF EXISTS hospital.departments;
+DROP TABLE IF EXISTS hospital.records;
+DROP TABLE IF EXISTS hospital.labResult;
+DROP TABLE IF EXISTS hospital.medicine;
+DROP TABLE IF EXISTS hospital.medOrder;
+DROP TABLE IF EXISTS hospital.operators;
+DROP TABLE IF EXISTS hospital.orderItem;
+DROP TABLE IF EXISTS hospital.patient;
+DROP TABLE IF EXISTS hospital.records;
+DROP TABLE IF EXISTS hospital.register;
+DROP TABLE IF EXISTS hospital.report;
+DROP TABLE IF EXISTS hospital.service;
+DROP TABLE IF EXISTS hospital.shift;
+DROP TABLE IF EXISTS hospital.shift_date;
+DROP TABLE IF EXISTS hospital.staff;
+DROP TABLE IF EXISTS hospital.branches;
+DROP TABLE IF EXISTS hospital.insurance;
 
 CREATE TABLE `ambulance` (
   `ambulance_id` BIGINT NOT NULL,
@@ -124,17 +149,19 @@ CREATE TABLE `departments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `doctorAdvice`
+-- Table structure for table `record`
 --
 
-CREATE TABLE `doctorAdvice` (
-  `doctor_advice_id` BIGINT NOT NULL,
-  `doctor_id` BIGINT NOT NULL,
-  `patient_id` BIGINT NOT NULL,
-  `description` varchar(500) NOT NULL,
-  `med_advice` varchar(500) NOT NULL,
-  `price` DECIMAL NOT NULL,
-  `date` date NOT NULL
+CREATE TABLE records (
+  record_id BIGINT NOT NULL AUTO_INCREMENT,
+  doctor_id BIGINT NOT NULL,
+  patient_id BIGINT NOT NULL,
+  description varchar(500),
+  med_advice varchar(500),
+  `type` varchar(500) NOT NULL,  -- for example, doctor advice
+  `date` date NOT NULL,
+  PRIMARY KEY (record_id),
+  KEY (patient_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -242,22 +269,13 @@ CREATE TABLE `orderItem` (
 
 CREATE TABLE `patient` (
   `patient_id` BIGINT NOT NULL,
-  `register_id` BIGINT NOT NULL,
-  `record_id` BIGINT NOT NULL
+  `register_id` BIGINT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `records`
---
-
-CREATE TABLE `records` (
-  `record_id` BIGINT NOT NULL,
-  `patient_id` BIGINT NOT NULL,
-  `description` varchar(500) NOT NULL,
-  `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -266,7 +284,7 @@ CREATE TABLE `records` (
 --
 
 CREATE TABLE `register` (
-  `register_id` BIGINT NOT NULL,
+  `register_id` BIGINT NOT NULL AUTO_INCREMENT,
   `username` varchar(15) NOT NULL,
   `password` varchar(16) NOT NULL,
   `email` varchar(20) NOT NULL,
@@ -275,7 +293,9 @@ CREATE TABLE `register` (
   `last_name` varchar(15) DEFAULT NULL,
   `birthday` varchar(15) DEFAULT NULL,
   `gender` varchar(8) DEFAULT NULL,
-  `address` varchar(50) DEFAULT NULL
+  `address` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`register_id`),
+  KEY (`operator`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -402,14 +422,6 @@ ALTER TABLE `departments`
   ADD KEY `building_id` (`building_id`);
 
 --
--- Indexes for table `doctorAdvice`
---
-ALTER TABLE `doctorAdvice`
-  ADD PRIMARY KEY (`doctor_advice_id`),
-  ADD KEY `doctor_id` (`doctor_id`),
-  ADD KEY `patient_id` (`patient_id`);
-
---
 -- Indexes for table `insurance`
 --
 ALTER TABLE `insurance`
@@ -455,22 +467,7 @@ ALTER TABLE `orderItem`
 -- Indexes for table `patient`
 --
 ALTER TABLE `patient`
-  ADD PRIMARY KEY (`patient_id`),
-  ADD KEY `record_id` (`record_id`);
-
---
--- Indexes for table `records`
---
-ALTER TABLE `records`
-  ADD PRIMARY KEY (`record_id`),
-  ADD KEY `patient_id` (`patient_id`);
-
---
--- Indexes for table `register`
---
-ALTER TABLE `register`
-  ADD PRIMARY KEY (`register_id`),
-  ADD KEY `operator` (`operator`);
+  ADD PRIMARY KEY (`patient_id`);
 
 --
 -- Indexes for table `report`
@@ -554,11 +551,6 @@ ALTER TABLE `buildings`
 ALTER TABLE `departments`
   MODIFY `department_id` BIGINT NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `doctorAdvice`
---
-ALTER TABLE `doctorAdvice`
-  MODIFY `doctor_advice_id` BIGINT NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `insurance`
@@ -597,12 +589,6 @@ ALTER TABLE `patient`
   MODIFY `patient_id` BIGINT NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `records`
---
-ALTER TABLE `records`
-  MODIFY `record_id` BIGINT NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `register`
 --
 ALTER TABLE `register`
@@ -632,109 +618,6 @@ ALTER TABLE `shift`
 ALTER TABLE `staff`
   MODIFY `staff_id` BIGINT NOT NULL AUTO_INCREMENT;
 
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `ambulanceOrder`
---
-ALTER TABLE `ambulanceOrder`
-  ADD CONSTRAINT `ambulance_order_fk_1` FOREIGN KEY (`emergency_id`) REFERENCES `staff` (`staff_id`),
-  ADD CONSTRAINT `ambulance_order_fk_2` FOREIGN KEY (`ambulance_id`) REFERENCES `ambulance` (`ambulance_id`),
-  ADD CONSTRAINT `ambulance_order_fk_3` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`patient_id`);
-
---
--- Constraints for table `appointments`
---
-ALTER TABLE `appointments`
-  ADD CONSTRAINT `appointments_fk_1` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`patient_id`),
-  ADD CONSTRAINT `appointments_fk_2` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`staff_id`);
-
---
--- Constraints for table `bills`
---
-ALTER TABLE `bills`
-  ADD CONSTRAINT `bills_fk_1` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`patient_id`),
-  ADD CONSTRAINT `bills_fk_2` FOREIGN KEY (`record_id`) REFERENCES `records` (`record_id`),
-  ADD CONSTRAINT `bills_fk_3` FOREIGN KEY (`doctor_advice_id`) REFERENCES `doctorAdvice` (`doctor_advice_id`),
-  ADD CONSTRAINT `bills_fk_4` FOREIGN KEY (`lab_result_id`) REFERENCES `labResult` (`lab_result_id`),
-  ADD CONSTRAINT `bills_fk_5` FOREIGN KEY (`med_order_id`) REFERENCES `medOrder` (`med_order_id`),
-  ADD CONSTRAINT `bills_fk_6` FOREIGN KEY (`ambulance_order_id`) REFERENCES `ambulanceOrder` (`ambulance_order_id`);
-
---
--- Constraints for table `departments`
---
-ALTER TABLE `departments`
-  ADD CONSTRAINT `departments_fk_1` FOREIGN KEY (`building_id`) REFERENCES `buildings` (`building_id`);
-
---
--- Constraints for table `doctorAdvice`
---
-ALTER TABLE `doctorAdvice`
-  ADD CONSTRAINT `doctor_advice_fk_1` FOREIGN KEY (`doctor_id`) REFERENCES `staff` (`staff_id`),
-  ADD CONSTRAINT `doctor_advice_fk_2` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`patient_id`);
-
---
--- Constraints for table `labResult`
---
-ALTER TABLE `labResult`
-  ADD CONSTRAINT `lab_result_fk_1` FOREIGN KEY (`sample_id`) REFERENCES `staff` (`staff_id`),
-  ADD CONSTRAINT `lab_result_fk_2` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`patient_id`);
-
---
--- Constraints for table `medOrder`
---
-ALTER TABLE `medOrder`
-  ADD CONSTRAINT `medorder_ibfk_1` FOREIGN KEY (`pharmacy_id`) REFERENCES `staff` (`staff_id`),
-  ADD CONSTRAINT `medorder_ibfk_2` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`patient_id`);
-
---
--- Constraints for table `orderItem`
---
-ALTER TABLE `orderItem`
-  ADD CONSTRAINT `orderitem_ibfk_1` FOREIGN KEY (`medicine_id`) REFERENCES `medicine` (`medicine_id`),
-  ADD CONSTRAINT `orderitem_ibfk_2` FOREIGN KEY (`med_order_id`) REFERENCES `medOrder` (`med_order_id`);
-
---
--- Constraints for table `patient`
---
-ALTER TABLE `patient`
-  ADD CONSTRAINT `patient_ibfk_1` FOREIGN KEY (`record_id`) REFERENCES `records` (`record_id`);
-
---
--- Constraints for table `records`
---
-ALTER TABLE `records`
-  ADD CONSTRAINT `records_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`patient_id`);
-
---
--- Constraints for table `register`
---
-ALTER TABLE `register`
-  ADD CONSTRAINT `register_ibfk_1` FOREIGN KEY (`operator`) REFERENCES `operators` (`operator_id`);
-
---
--- Constraints for table `report`
---
-ALTER TABLE `report`
-  ADD CONSTRAINT `report_ibfk_1` FOREIGN KEY (`building_id`) REFERENCES `buildings` (`building_id`),
-  ADD CONSTRAINT `report_ibfk_2` FOREIGN KEY (`building_id`) REFERENCES `buildings` (`building_id`);
-
---
--- Constraints for table `shift`
---
-ALTER TABLE `shift`
-  ADD CONSTRAINT `shift_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`staff_id`),
-  ADD CONSTRAINT `shift_ibfk_2` FOREIGN KEY (`shift_date_id`) REFERENCES `shift_date` (`shift_date_id`);
-
---
--- Constraints for table `staff`
---
-ALTER TABLE `staff`
-  ADD CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `departments` (`department_id`),
-  ADD CONSTRAINT `staff_ibfk_2` FOREIGN KEY (`position`) REFERENCES `operators` (`operator_id`),
-  ADD CONSTRAINT `staff_ibfk_3` FOREIGN KEY (`register_id`) REFERENCES `register` (`register_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
