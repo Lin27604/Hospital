@@ -1,5 +1,6 @@
 package com.medical.hospitalBoot.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
@@ -10,20 +11,16 @@ import javax.persistence.Table;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name="address")
+@Table(name = "insurance")
 @EntityListeners(AuditingEntityListener.class)
-public class Address {
-	
+public class Insurance {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long addressId;
+	private Long insuranceId;
 	
-	private String street;
+	private String name;
 	
-	private String city;
-	
-	private String state;
-	
-	private String zip;
-
+    @Column(length = 10, precision = 2, columnDefinition="DECIMAL(10,0)")
+	private Double cover;
 }

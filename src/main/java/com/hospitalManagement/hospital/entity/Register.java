@@ -1,6 +1,7 @@
 package com.medical.hospitalBoot.entity;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
@@ -13,23 +14,40 @@ import javax.persistence.Table;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name="shift")
+@Table(name="registers")
 @EntityListeners(AuditingEntityListener.class)
-public class Shift {
-	
+public class Register 
+{
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long shiftId;
+	private Long registerId;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "staff_id",
-	             referencedColumnName = "staffId"
-	               )
-	private Staff staff;
+	private String username;
+	
+	private String password;
+
+	private String email;
+
+	private String firstName;
+
+	private String lastName;
+
+	private String birthday;
+
+	private String gender;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "shiftDate_id",
-	             referencedColumnName = "shiftDateId"
+	@JoinColumn(name = "address_id",
+	             referencedColumnName = "addressId"
 	               )
-	private ShiftDate shiftDate;
+	private Address address;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "operator_id",
+	             referencedColumnName = "operatorId"
+	               )
+	private Operator operator;
+	 
+	
 }

@@ -1,37 +1,39 @@
 package com.medical.hospitalBoot.entity;
 
+import java.sql.Time;
 import java.util.Date;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name="medicine")
+@Table(name="report")
 @EntityListeners(AuditingEntityListener.class)
+public class Report {
 
-public class Medicine {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long medicineId;
+	private Long reportId;
 	
-	private String name;
+	private String description;
 	
-	private String category;
-    @Column(length = 10, precision = 2, columnDefinition="DECIMAL(10,2)")
-	private Double price;
+	private Date date;
 
-	private Long quantity;
+	private Time time;
 
-	private Date produceDate;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "building_id",
+	             referencedColumnName = "buildingId"
+	               )
+	private Building building;
 
-	private Date validDate;
-
-	
 }
