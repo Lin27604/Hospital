@@ -16,5 +16,7 @@ public class Building {
 
 	private String name;
 
+	@Column(columnDefinition = "int default 0")
+	private Long status;
 
 }
