@@ -32,10 +32,10 @@ public class Staff {
 	private Register register;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "position_id",
-	             referencedColumnName = "positionId"
+	@JoinColumn(name = "operator_id",
+	             referencedColumnName = "operatorId"
 	               )
-	private Position position;
+	private Operator operator;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "department_id",
