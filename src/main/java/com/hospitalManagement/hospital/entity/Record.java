@@ -20,7 +20,7 @@ public class Record {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long recordId;
 
-    private Long doctorId;
+    private Long staffId;
 
     private Long patientId;
 

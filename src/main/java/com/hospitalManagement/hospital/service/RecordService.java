@@ -1,5 +1,6 @@
 package com.hospitalManagement.hospital.service;
 
+import com.hospitalManagement.hospital.entity.Appointment;
 import com.hospitalManagement.hospital.entity.Record;
 import com.hospitalManagement.hospital.repository.RecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,4 +17,13 @@ public class RecordService {
     public List<Record> getRecordsByPatientId(Long patientId) {
         return repository.findByPatientId(patientId);
     }
+
+    public List<Record> getRecordsByStaffId(Long staffId) {
+        return repository.findByStaffId(staffId);
+    }
+
+    public Record insertOrUpdateRecord(Record record) {
+        return repository.save(record);
+    }
+
 }
