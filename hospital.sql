@@ -154,7 +154,7 @@ CREATE TABLE `departments` (
 
 CREATE TABLE records (
   record_id BIGINT NOT NULL AUTO_INCREMENT,
-  doctor_id BIGINT NOT NULL,
+  staff_id BIGINT NOT NULL,
   patient_id BIGINT NOT NULL,
   description varchar(500),
   med_advice varchar(500),

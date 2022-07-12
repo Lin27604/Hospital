@@ -24,18 +24,14 @@ public class Staff {
 	
     @Column(length = 10, precision = 2, columnDefinition="DECIMAL(10,0)")
 	private Double salary;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "register_id",
 	             referencedColumnName = "registerId"
 	               )
 	private Register register;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "operator_id",
-	             referencedColumnName = "operatorId"
-	               )
-	private Operator operator;
+	private String position;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "department_id",

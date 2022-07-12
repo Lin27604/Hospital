@@ -17,8 +17,8 @@ public class AppointmentService {
         return appointmentsRepository.findByPatientId(patientId);
     }
 
-    public Appointment getAppointById(Long id) {
-        return appointmentsRepository.getReferenceById(id);
+    public List<Appointment> getAppointmentByStaffId(Long staffId) {
+        return appointmentsRepository.findByStaffId(staffId);
     }
 
     public void deleteAppointmentById(Long id) {
