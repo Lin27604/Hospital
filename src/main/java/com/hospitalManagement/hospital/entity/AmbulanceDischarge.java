@@ -1,20 +1,29 @@
-//package com.hospitalManagement.hospital.entity;
-//
-//import javax.persistence.Entity;
+package com.hospitalManagement.hospital.entity;
+
+//import javax.persistence.*;
 //
 //import lombok.AllArgsConstructor;
 //import lombok.Data;
 //import lombok.NoArgsConstructor;
+//
+//import java.util.Date;
 //
 //@Entity
 //@Data
 //@AllArgsConstructor
 //@NoArgsConstructor
 //public class AmbulanceDischarge {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //	private Long id;
-//	private String startTime;
-//	private String finishTime;
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "doctor_id",
+//            referencedColumnName = "doctorId"
+//    )
+//	private Doctor doctor;
 //	private Ambulance ambulance;
-//	private Emergency emergency;
+//    private String location;
+//    private String time;
+//    private Date date;
 //
 //}

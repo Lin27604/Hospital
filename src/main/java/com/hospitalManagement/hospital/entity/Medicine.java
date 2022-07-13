@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Entity
 @Data
 @Table(name="medicine")
@@ -14,11 +16,21 @@ import lombok.NoArgsConstructor;
 public class Medicine {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	private String category;
+	private Long medicineId;
+
 	private String name;
+
+	private String category;
+	@Column(length = 10, precision = 2, columnDefinition="DECIMAL(10,2)")
 	private Double price;
+
 	private Long quantity;
+
+	private Date produceDate;
+
+	private Date validDate;
+
+
 
 
 

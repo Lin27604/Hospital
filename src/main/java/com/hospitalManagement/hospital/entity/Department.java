@@ -31,7 +31,7 @@ public class Department {
 	             referencedColumnName = "buildingId"
 	               )
 	private Building building;
-	
-	
+
+
 
 }

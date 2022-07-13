@@ -16,6 +16,10 @@ public class LabSample {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long sampleId;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "patient_id",
+			referencedColumnName = "patientId")
+    private Patient patient;
 	private String sampleName;
 	private String type;
 	private Date date;
