@@ -7,6 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Entity
 @Table(name = "buildings")
@@ -21,6 +24,8 @@ public class Building {
 	private Long buildingId;
 
 	private String name;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "building")
+	private Set<Department> departments=new HashSet<>();
 
 
 

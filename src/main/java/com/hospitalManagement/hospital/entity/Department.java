@@ -26,10 +26,10 @@ public class Department {
 
 
 	@ManyToOne(targetEntity = Building.class,
-			cascade = CascadeType.ALL)
-	@JoinColumn(name = "building_id",
-	             referencedColumnName = "buildingId"
-	               )
+			cascade = CascadeType.ALL,fetch =FetchType.LAZY)
+//	@JoinColumn(name = "building_id",
+//	             referencedColumnName = "buildingId"
+//	               )
 	private Building building;
 
 

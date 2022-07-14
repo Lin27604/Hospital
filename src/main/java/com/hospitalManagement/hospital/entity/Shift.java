@@ -6,9 +6,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Data
-@Table(name="shift")
+@Table(name="shifts")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Shift {
@@ -16,11 +19,12 @@ public class Shift {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long shiftId;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "staff_id",
-			referencedColumnName = "staffId"
-	)
-	private Staff staff;
+	@ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
+    @JoinTable(name="staff_shift",
+	           joinColumns = {@JoinColumn(name = "shift_id", referencedColumnName = "shiftId")},
+			  inverseJoinColumns = {@JoinColumn(name = "staff_id", referencedColumnName = "staffId")}
+			   )
+	private Set<Staff> staffs = new HashSet<>();
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "shiftDate_id",
