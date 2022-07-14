@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface RegisterRepository extends JpaRepository<Register,Long> {
 
-    @Query(value = "SELECT * FROM Register r INNER JOIN operators o WHERE o.name='security'",nativeQuery = true)
+    @Query( "SELECT r FROM Register r JOIN r.operator o WHERE o.name='security'")
     public List<Register> listAllSecurity();
 }
