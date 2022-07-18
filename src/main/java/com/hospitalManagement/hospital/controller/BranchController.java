@@ -16,7 +16,7 @@ import com.hospitalManagement.hospital.entity.Branch;
 import com.hospitalManagement.hospital.service.BranchService;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("api/v1/hosp")
 
 public class BranchController 
 {
