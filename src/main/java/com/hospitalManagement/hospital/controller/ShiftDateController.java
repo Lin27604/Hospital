@@ -16,7 +16,7 @@ import com.hospitalManagement.hospital.entity.ShiftDate;
 import com.hospitalManagement.hospital.service.ShiftDateService;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("api/v1/hosp")
 
 public class ShiftDateController 
 {
