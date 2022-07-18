@@ -2,7 +2,6 @@ package com.hospitalManagement.hospital.controller;
 
 import com.hospitalManagement.hospital.entity.MedOrder;
 import com.hospitalManagement.hospital.entity.Medicine;
-import com.hospitalManagement.hospital.serviceImpl.BuildingServiceImpl;
 import com.hospitalManagement.hospital.serviceImpl.MedicineServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +12,7 @@ import java.util.List;
 @RequestMapping("api/v1/hosp")
 public class PharmacyController {
 
-    @Autowired
-    BuildingServiceImpl buildingServiceImpl;
+
 
 
     @Autowired
