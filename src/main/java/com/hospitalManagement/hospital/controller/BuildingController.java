@@ -16,7 +16,7 @@ import com.hospitalManagement.hospital.entity.Building;
 import com.hospitalManagement.hospital.service.BuildingService;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("api/v1/hosp")
 
 public class BuildingController 
 {
