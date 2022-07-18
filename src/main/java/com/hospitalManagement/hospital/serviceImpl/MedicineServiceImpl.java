@@ -66,4 +66,30 @@ public class MedicineServiceImpl {
     public void deleteMedOrderById(Long id) {
         medOrderRepository.deleteById(id);
     }
+
+    public MedOrder updateMedOrderById(MedOrder medOrder, Long id) {
+        MedOrder medOrder1 = medOrderRepository.findById(id).get();
+        if(Objects.nonNull(medOrder.getQuantity())&&
+                !"".equalsIgnoreCase(medOrder.getQuantity())){
+            medOrder1.setQuantity(medOrder.getQuantity());
+        }
+        if(Objects.nonNull(medOrder.getMedicine())&&
+                !"".equalsIgnoreCase(String.valueOf(medOrder.getMedicine()))){
+             medOrder1.setMedicine(medOrder.getMedicine());
+        }
+        if(Objects.nonNull(medOrder.getDeliveryStatu())&&
+                !"".equalsIgnoreCase(String.valueOf(medOrder.getDeliveryStatu()))){
+            medOrder1.setDeliveryStatu(medOrder.getDeliveryStatu());
+        }
+        if(Objects.nonNull(medOrder.getPatient())&&
+                !"".equalsIgnoreCase(String.valueOf(medOrder.getPatient()))){
+            medOrder1.setPatient(medOrder.getPatient());
+        }
+        if(Objects.nonNull(medOrder.getTotal())&&
+                !"".equalsIgnoreCase(medOrder.getTotal())){
+            medOrder1.setTotal(medOrder.getTotal());
+        }
+        return medOrderRepository.save(medOrder1);
+
+    }
 }

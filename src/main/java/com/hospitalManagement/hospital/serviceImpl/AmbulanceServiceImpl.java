@@ -65,4 +65,21 @@ public class AmbulanceServiceImpl {
     public void deleteAmbulanceDischarge(Long id) {
         dischargeRepository.deleteById(id);
     }
+
+    public AmbulanceDischarge updateAmbulanceDischarge(AmbulanceDischarge ambulanceDischarge, Long id) {
+        AmbulanceDischarge discharge = dischargeRepository.findById(id).get();
+        if(Objects.nonNull(ambulanceDischarge.getAmbulance())&&
+                !"".equalsIgnoreCase(String.valueOf(ambulanceDischarge.getAmbulance()))){
+            discharge.setAmbulance(ambulanceDischarge.getAmbulance());
+        }
+        if(Objects.nonNull(ambulanceDischarge.getLocation())&&
+                !"".equalsIgnoreCase(String.valueOf(ambulanceDischarge.getLocation()))){
+            discharge.setLocation(ambulanceDischarge.getLocation());
+        }
+        if(Objects.nonNull(ambulanceDischarge.getDate())&&
+                !"".equalsIgnoreCase(String.valueOf(ambulanceDischarge.getDate()))){
+            discharge.setDate(ambulanceDischarge.getDate());
+        }
+        return  dischargeRepository.save(discharge);
+    }
 }

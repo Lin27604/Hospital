@@ -3,6 +3,7 @@ package com.hospitalManagement.hospital.entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,13 +20,15 @@ public class MedOrder {
 	private String quantity;
 	private String total;
 	private String deliveryStatu;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
 	@JoinColumn(name = "patient_id",
 			referencedColumnName = "patientId"
 	)
 	private Patient patient;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
 	@JoinColumn(name = "med_id",
 			referencedColumnName = "medicineId"
 	)
