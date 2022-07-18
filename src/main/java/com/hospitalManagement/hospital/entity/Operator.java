@@ -20,10 +20,25 @@ import java.util.Set;
 @EntityListeners(AuditingEntityListener.class)
 public class Operator {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long operatorId;
 
 	private String name;
+
+	public Long getOperatorId() {
+		return operatorId;
+	}
+
+	public void setOperatorId(Long operatorId) {
+		this.operatorId = operatorId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 
 

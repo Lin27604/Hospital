@@ -8,16 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Table(name = "insurance")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 public class Insurance {
 
@@ -29,4 +23,30 @@ public class Insurance {
 	
     @Column(length = 10, precision = 2, columnDefinition="DECIMAL(10,0)")
 	private Double cover;
+
+	public Long getInsuranceId() {
+		return insuranceId;
+	}
+
+	public void setInsuranceId(Long insuranceId) {
+		this.insuranceId = insuranceId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Double getCover() {
+		return cover;
+	}
+
+	public void setCover(Double cover) {
+		this.cover = cover;
+	}
+    
+    
 }
