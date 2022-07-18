@@ -16,7 +16,7 @@ import com.hospitalManagement.hospital.entity.Shift;
 import com.hospitalManagement.hospital.service.ShiftService;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("api/v1/hosp")
 
 public class ShiftController 
 {
