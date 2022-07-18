@@ -16,7 +16,7 @@ import com.hospitalManagement.hospital.entity.Insurance;
 import com.hospitalManagement.hospital.service.InsuranceService;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("api/v1/hosp")
 
 public class InsuranceController 
 {
