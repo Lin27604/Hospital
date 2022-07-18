@@ -16,7 +16,7 @@ import com.hospitalManagement.hospital.entity.Department;
 import com.hospitalManagement.hospital.service.DepartmentService;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("api/v1/hosp")
 
 public class DepartmentController 
 {
