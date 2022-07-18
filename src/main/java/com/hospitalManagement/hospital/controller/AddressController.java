@@ -17,7 +17,7 @@ import com.hospitalManagement.hospital.service.AddressService;
 
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("api/v1/hosp")
 
 public class AddressController 
 {
