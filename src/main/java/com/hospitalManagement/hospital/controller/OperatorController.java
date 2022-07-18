@@ -15,7 +15,7 @@ import com.hospitalManagement.hospital.entity.Operator;
 import com.hospitalManagement.hospital.service.OperatorService;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("api/v1/hosp")
 public class OperatorController {
 	@Autowired
 	OperatorService OperatorService;
