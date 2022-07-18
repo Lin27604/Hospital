@@ -23,23 +23,23 @@ public class PharmacyController {
     @Autowired
     MedicineServiceImpl medicineService;
 
-
-    @GetMapping("/building")
-    public List<Building> getAllBuildings(){
-
-        return buildingServiceImpl.getAllBuildings();
-    }
-    @DeleteMapping("deleteBuilding/{id}")
-    public void deleteBuildingById(@PathVariable("id") Long id){
-
-        buildingServiceImpl.deleteBuildingById(id);
-    }
-
-    @PostMapping("/newDepartment")
-    public Department saveDepartment(@RequestBody Department depart){
-        return departmentServiceImpl.saveDepartment(depart);
-
-    }
+//
+//    @GetMapping("/building")
+//    public List<Building> getAllBuildings(){
+//
+//        return buildingServiceImpl.getAllBuildings();
+//    }
+//    @DeleteMapping("deleteBuilding/{id}")
+//    public void deleteBuildingById(@PathVariable("id") Long id){
+//
+//        buildingServiceImpl.deleteBuildingById(id);
+//    }
+//
+//    @PostMapping("/newDepartment")
+//    public Department saveDepartment(@RequestBody Department depart){
+//        return departmentServiceImpl.saveDepartment(depart);
+//
+//    }
 
 
     //Medicine Management

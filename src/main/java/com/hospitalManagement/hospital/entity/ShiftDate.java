@@ -29,7 +29,7 @@ public class ShiftDate {
 		
 	private Date date;
 
-	private Time startTime;
+	private String startTime;
 	
-	private Time finishTime;
+	private String finishTime;
 }

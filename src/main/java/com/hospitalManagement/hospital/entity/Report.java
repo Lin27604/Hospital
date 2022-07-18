@@ -28,7 +28,7 @@ public class Report {
 	
 	private Date date;
 
-	private Time time;
+
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "building_id",

@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -16,6 +17,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
+@EqualsAndHashCode(exclude = "nameAttributeInThisClassWithOneToMany")
 public class Staff {
 
 	@Id
@@ -31,7 +33,7 @@ public class Staff {
 	               )
 	private Register register;
 
-	private String position;
+
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "department_id",
@@ -41,5 +43,9 @@ public class Staff {
 
 	@ManyToMany(mappedBy = "staffs",fetch = FetchType.LAZY)
 	private Set<Shift> shifts= new HashSet<>();
+
+
+
+
 
 }

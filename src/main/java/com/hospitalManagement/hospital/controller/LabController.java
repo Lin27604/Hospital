@@ -10,25 +10,25 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/lab/")
+@RequestMapping("/")
 public class LabController {
     @Autowired
     LabServiceImpl labServiceImpl;
 
     //List All sample
-    @GetMapping("/list/sample")
+    @GetMapping("/sample")
     public List<LabSample> listALlLabSample(){
         return labServiceImpl.listALlLabSample();
     }
     //Insert a new sample
-    @PostMapping("/new/sample")
+    @PostMapping("/sample")
     public LabSample newLabSample(@RequestBody LabSample labSample){
         return labServiceImpl.newLabSample(labSample);
     }
 
     //Delete sample by id
-    @DeleteMapping("/delete/sample/{id}")
-    public void deleteSampleById(@PathVariable Long id){
+    @DeleteMapping("/sample/{id}")
+    public void deleteSampleById(@PathVariable("id") Long id){
         labServiceImpl.deleteSampleById(id);
     }
     /** Sample Result Implementation
