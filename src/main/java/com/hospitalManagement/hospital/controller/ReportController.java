@@ -16,7 +16,7 @@ import com.hospitalManagement.hospital.entity.Report;
 import com.hospitalManagement.hospital.service.ReportService;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("api/v1/hosp")
 
 public class ReportController 
 {
