@@ -16,7 +16,7 @@ import com.hospitalManagement.hospital.entity.Staff;
 import com.hospitalManagement.hospital.service.StaffService;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("api/v1/hosp")
 
 public class StaffController 
 {
