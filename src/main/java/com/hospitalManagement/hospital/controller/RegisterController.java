@@ -16,7 +16,7 @@ import com.hospitalManagement.hospital.service.RegisterService;
 
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("api/v1/hosp")
 public class RegisterController 
 {
 
