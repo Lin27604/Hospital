@@ -1,4 +1,4 @@
-package com.medical.hospitalBoot.entity;
+package com.hospitalManagement.hospital.entity;
 
 import java.sql.Time;
 import java.util.Date;
@@ -32,8 +32,8 @@ public class Bill {
 	private Patient patient;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "MedOrder_id",
-	             referencedColumnName = "MedOrderId"
+	@JoinColumn(name = "med_order_id",
+	             referencedColumnName = "medOrderId"
 	               )
 	private MedOrder medorder;
 	

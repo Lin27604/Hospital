@@ -1,9 +1,9 @@
-package com.medical.hospitalBoot.repository;
+package com.hospitalManagement.hospital.repository;
 
+import com.hospitalManagement.hospital.entity.Bill;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
-import com.medical.hospitalBoot.entity.Bill;
 
 public interface BillRepository extends JpaRepository<Bill, Long>{
 

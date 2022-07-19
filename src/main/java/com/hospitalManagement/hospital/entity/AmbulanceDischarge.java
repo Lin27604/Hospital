@@ -14,7 +14,6 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(exclude = "nameAttributeInThisClassWithManyToOne")
 public class AmbulanceDischarge {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

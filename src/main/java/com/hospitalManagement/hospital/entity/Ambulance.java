@@ -16,7 +16,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Entity
 @Data
 @Table(name = "ambulance")
-//@EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Ambulance {
@@ -24,20 +23,9 @@ public class Ambulance {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long ambulanceId;
-    @Column(columnDefinition = "int default 0")
-	private Long status;
-	public Long getAmbulanceId() {
-		return ambulanceId;
-	}
-	public void setAmbulanceId(Long ambulanceId) {
-		this.ambulanceId = ambulanceId;
-	}
-	public Long getStatus() {
-		return status;
-	}
-	public void setStatus(Long status) {
-		this.status = status;
-	}
+	private String number;
+	private String location;
+	private String status;
     
     
 }

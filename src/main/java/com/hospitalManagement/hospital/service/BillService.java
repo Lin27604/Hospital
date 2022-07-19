@@ -1,12 +1,12 @@
-package com.medical.hospitalBoot.service;
+package com.hospitalManagement.hospital.service;
 
 import java.util.List;
 
+import com.hospitalManagement.hospital.entity.Bill;
+import com.hospitalManagement.hospital.repository.BillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.medical.hospitalBoot.entity.Bill;
-import com.medical.hospitalBoot.repository.BillRepository;
 @Component
 public class BillService {
 

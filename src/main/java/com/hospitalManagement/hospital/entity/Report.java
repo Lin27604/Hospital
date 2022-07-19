@@ -60,14 +60,6 @@ public class Report {
 		this.date = date;
 	}
 
-	public Time getTime() {
-		return time;
-	}
-
-	public void setTime(Time time) {
-		this.time = time;
-	}
-
 	public Building getBuilding() {
 		return building;
 	}

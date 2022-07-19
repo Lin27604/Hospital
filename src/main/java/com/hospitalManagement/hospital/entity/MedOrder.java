@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 public class MedOrder {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="med_orderId")
-	private Long id;
+	private Long medOrderId;
+
 	private String quantity;
 	private String total;
 	private String deliveryStatu;
