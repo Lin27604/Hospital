@@ -5,13 +5,17 @@ import com.hospitalManagement.hospital.entity.Record;
 import com.hospitalManagement.hospital.service.AppointmentService;
 import com.hospitalManagement.hospital.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
 @RestController
-@RequestMapping("/patient")
-public class PatientController {
+@RequestMapping("/nurse")
+public class NurseController {
 
     @Autowired
     private AppointmentService appointmentService;
@@ -20,12 +24,12 @@ public class PatientController {
     private RecordService recordService;
 
     @GetMapping("/{id}/appointments")
-    public List<Appointment> getAppointmentsByPatientId(@PathVariable("id") Long id) {
-        return appointmentService.getAppointmentsByPatientId(id);
+    public List<Appointment> getAppointmentsByNurseId(@PathVariable("id") Long id) {
+        return appointmentService.getAppointmentByNurseId(id);
     }
 
     @GetMapping("/{id}/records")
-    public List<Record> getRecordsByPatientId(@PathVariable("id") Long id) {
-        return recordService.getRecordsByPatientId(id);
+    public List<Record> getRecordsByNurseId(@PathVariable("id") Long id) {
+        return recordService.getRecordsByNurseId(id);
     }
 }

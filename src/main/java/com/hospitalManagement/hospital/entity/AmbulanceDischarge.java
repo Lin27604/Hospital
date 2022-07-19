@@ -28,7 +28,7 @@ public class AmbulanceDischarge {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "ambulance_id",
-            referencedColumnName = "id"
+            referencedColumnName = "ambulanceId"
     )
 	private Ambulance ambulance;
     private String location;

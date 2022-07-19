@@ -38,7 +38,7 @@ public class Staff {
 	               )
 	private Operator operator;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "department_id",
 	             referencedColumnName = "departmentId"
 	               )

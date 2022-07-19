@@ -31,4 +31,8 @@ public class Appointment {
 
     private Date date;
 
+    private Long nurseId;
+
+    private Long guestId;
+
 }

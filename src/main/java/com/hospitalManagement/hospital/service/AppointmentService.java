@@ -21,6 +21,14 @@ public class AppointmentService {
         return appointmentsRepository.findByStaffId(staffId);
     }
 
+    public List<Appointment> getAppointmentByNurseId(Long nurseId) {
+        return appointmentsRepository.findByNurseId(nurseId);
+    }
+
+    public List<Appointment> getAppointmentByGuestId(Long guestId) {
+        return appointmentsRepository.findByGuestId(guestId);
+    }
+
     public void deleteAppointmentById(Long id) {
         appointmentsRepository.deleteById(id);
     }

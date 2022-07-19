@@ -22,6 +22,12 @@ public class RecordService {
         return repository.findByStaffId(staffId);
     }
 
+    public List<Record> getRecordsByNurseId(Long nurseId) { return repository.findByNurseId(nurseId);}
+
+    public List<Record> getRecordsByGuestId(Long guestId) {
+        return repository.findByGuestId(guestId);
+    }
+
     public Record insertOrUpdateRecord(Record record) {
         return repository.save(record);
     }

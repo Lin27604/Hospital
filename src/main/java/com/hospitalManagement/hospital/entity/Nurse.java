@@ -9,20 +9,19 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "doctor")
+@Table(name = "nurse")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Doctor {
-
+public class Nurse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long doctorId;
+    private Long nurseId;
 
-    @OneToMany(mappedBy="doctorId",
-        orphanRemoval = true,
-        fetch = FetchType.LAZY,
-        cascade = CascadeType.ALL
+    @OneToMany(mappedBy="nurse",
+            orphanRemoval = true,
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
     )
     private Set<Patient> patients;
 
@@ -41,6 +40,4 @@ public class Doctor {
     private String type;
 
     private Date date;
-
-    private Long nurseId;
 }

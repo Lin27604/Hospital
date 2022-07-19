@@ -27,7 +27,8 @@ public class SecurityServiceImpl {
 
 
     public List<Register> listAllSecurity() {
-        return registerRepository.listAllSecurity();
+//        return registerRepository.listAllSecurity();
+        return null;
     }
 
     public List<Security> listAllSecurityReport() {

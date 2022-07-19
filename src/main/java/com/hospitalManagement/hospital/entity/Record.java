@@ -31,4 +31,8 @@ public class Record {
     private String type;
 
     private Date date;
+
+    private Long nurseId;
+
+    private Long guestId;
 }

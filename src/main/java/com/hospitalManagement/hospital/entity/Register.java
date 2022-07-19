@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name="registers")
+@Table(name="register")
 @EntityListeners(AuditingEntityListener.class)
 public class Register 
 {

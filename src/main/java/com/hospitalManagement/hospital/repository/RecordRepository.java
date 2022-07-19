@@ -12,4 +12,8 @@ public interface RecordRepository extends JpaRepository<Record, Long> {
     List<Record> findByPatientId(Long patientId);
 
     List<Record> findByStaffId(Long staffId);
+
+    List<Record> findByNurseId(Long nurseId);
+
+    List<Record> findByGuestId(Long guestId);
 }
